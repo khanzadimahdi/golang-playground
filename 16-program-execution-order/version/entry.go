@@ -3,6 +3,7 @@ package version
 import "fmt"
 
 func init() {
+	defer fmt.Println("defer version/entry.go ==> init()")
 	fmt.Println("version/entry.go ==> init()")
 }
 

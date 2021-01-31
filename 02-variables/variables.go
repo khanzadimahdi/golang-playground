@@ -28,7 +28,8 @@ func main() {
 	// format 3:
 	k := 42
 
-	var l float32 = float32(j)
+	// format:
+	var l = float32(j)
 
 	fmt.Println(i, j, k)
 	fmt.Println(string(k))
