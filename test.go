@@ -1,15 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	factorial := func(number int) int {
-		if number == 1 {
-			return 1
-		}
+	done := make(chan int)
 
-		return number * factorial(number-1) // compile error undefined: factorial
-	}
+	go func() {
+		time.Sleep(time.Second * 5)
+		fmt.Println("in goroutine")
 
-	fmt.Println(factorial(4))
+		done <- 1
+	}()
+
+	fmt.Println(<-done)
 }
