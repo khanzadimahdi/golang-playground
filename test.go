@@ -6,14 +6,15 @@ import (
 )
 
 func main() {
-	done := make(chan int)
-
-	go func() {
-		time.Sleep(time.Second * 5)
-		fmt.Println("in goroutine")
-
-		done <- 1
-	}()
-
-	fmt.Println(<-done)
+loop:
+	for {
+		x := 9
+		time.Sleep(1 * time.Second)
+		x++
+		fmt.Println(x)
+		if x >= 10 {
+			break loop
+		}
+	}
+	fmt.Println("after loop")
 }
