@@ -28,3 +28,9 @@ func main() {
 	Deposit(1000)
 	fmt.Println(Balance())
 }
+
+/*
+	Notice:
+	A defer is marginally more expensive than an explicitcall to Unlock,
+	but not enough to justify less clear code.
+*/
