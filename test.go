@@ -2,19 +2,17 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"reflect"
 )
 
 func main() {
-loop:
-	for {
-		x := 9
-		time.Sleep(1 * time.Second)
-		x++
-		fmt.Println(x)
-		if x >= 10 {
-			break loop
-		}
+	x := 2
+	y := reflect.ValueOf(&x)
+
+	if y.CanAddr() {
+		z := y.Elem()
+		fmt.Println(z)
 	}
-	fmt.Println("after loop")
+
+	fmt.Println(x)
 }

@@ -20,3 +20,10 @@ func main() {
 
 	time.Sleep(1 * time.Second)
 }
+
+/**
+	Notice:
+	in absence of explicit synchronization, the compiler and CPU are
+	free to reorder accesses to memory in any number of ways, so long as the
+	behavior of each goroutine is sequentially consistent.
+**/
