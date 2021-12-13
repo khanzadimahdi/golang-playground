@@ -2,17 +2,18 @@ package main
 
 import (
 	"fmt"
-	"reflect"
+	"sync"
 )
 
 func main() {
-	x := 2
-	y := reflect.ValueOf(&x)
+	var wg sync.WaitGroup
 
-	if y.CanAddr() {
-		z := y.Elem()
-		fmt.Println(z)
+	for _, salutation := range []string{"hello", "greetings", "good day"} {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			fmt.Println(salutation)
+		}()
 	}
-
-	fmt.Println(x)
+	wg.Wait()
 }
